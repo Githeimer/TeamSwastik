@@ -1,4 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+:root{
+    --background-color:white;
+    --sign-container-color:white;
+    --button-color:rgb(56, 56, 214);
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: 'roboto',sans-serif;
+  background-color:var(--background-color);
+}
+.container{
+  max-width: 1155px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  align-items: center;
+ 
+  height: 100vh;
+  background-color: var(--background-color);
+}
+
+.sign-container{
+  width: auto;
+  border: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color:var(--sign-container-color);
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  align-items: center;
+  gap:10px;
+  height: 45 0px;
+}
+
+.sign-container h1{
+  text-align: center;
+}
+
+.center{
+  justify-content: center;
+}
+
+.sign-form{
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap:10px;
+  margin-top:20px;
+}
+
+.sign-form input{
+  border: 1px solid gray;
+  padding: 4px;
+  border-radius: 3px;
+  outline: none;
+}
+
+.sign-form input:focus{
+  border: 1px solid rgba(4, 64, 205, 0.651);
+  outline: none;
+  padding: 4.5px;
+  transition: 0.12s;
+ 
+}
+
+.sign-btn{
+  width: 50%;
+  margin: 0 auto;
+  padding: 5px;
+  background-color:var(--button-color);
+  color: white;
+  border-radius: 4px;
+}
+
+.toggle button{
+  text-decoration: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  color:  var(--button-color);
+  font-weight: bold;
+}
+
+.error{
+  color: red;
+  font-size: small;
+}
+
+.status{
+  color: green;
+}
+
 
