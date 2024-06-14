@@ -2,37 +2,39 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
-const Signin = () => {
+const Signup = () => {
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
+  const [phonenumber, setPhonenumber] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [status, setStatus] = useState("");
+  const [role, setRole] = useState("user");
 
   const navigate = useNavigate();
 
+  const handleUsername = (e) => setUsername(e.target.value);
   const handleEmail = (e) => setEmail(e.target.value);
+  const handlePhonenumber = (e) => setPhonenumber(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
+  const handleRole = (e) => setRole(e.target.value);
 
-  axios.defaults.withCredentials = true; //normally browsers dont send cookie in CORS request, with this
-  //cookies will be included and as well as authorization headers such as JWT Tokens
-  const URL_sign = "http://localhost:3000/auth/signin";
+  const URL_sign = "http://localhost:3000/auth/signup";
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
       .post(URL_sign, {
+        username,
         email,
         password,
+        phonenumber,
+        role,
       })
       .then((response) => {
         if (response.data.message) {
-          console.log(response);
           setStatus(response.data.message);
           setError("");
-          if (response.data.role == "user") {
-            navigate("/landing/user");
-          } else if (response.data.role == "organization") {
-            navigate("/landing/org");
-          }
+          navigate("/signin");
         }
       })
       .catch((err) => {
@@ -49,20 +51,39 @@ const Signin = () => {
   return (
     <div className="container center">
       <div className="sign-container">
-        <h1>Sign In</h1>
+        <h1>Sign up</h1>
 
         <form className="sign-form" onSubmit={handleSubmit}>
           {error && <p className="error">{error}</p>}
           {status && (
             <p className="status">
-              {status}. Procced to{" "}
+              {status}. Proceed to{" "}
               <span className="toggle">
-                <Link to="/landing">
-                  <button>Homepage</button>
+                <Link to="/signin">
+                  <button>Sign In</button>
                 </Link>
               </span>
             </p>
           )}
+          <label htmlFor="username">User Name:</label>
+          <input
+            type="text"
+            id="username"
+            value={username}
+            placeholder="Himesh Dulal"
+            onChange={handleUsername}
+            required
+          />
+
+          <label htmlFor="phonenumber">Phone Number:</label>
+          <input
+            type="text"
+            id="phonenumber"
+            value={phonenumber}
+            placeholder="+977 9813704229"
+            onChange={handlePhonenumber}
+            required
+          />
 
           <label htmlFor="email">Email:</label>
           <input
@@ -75,6 +96,12 @@ const Signin = () => {
             required
           />
 
+          <label htmlFor="role">Role: </label>
+          <select name="role" id="role" value={role} onChange={handleRole}>
+            <option value="user">User</option>
+            <option value="organization">Organization</option>
+          </select>
+
           <label htmlFor="password">Password:</label>
           <input
             type="password"
@@ -86,15 +113,13 @@ const Signin = () => {
           />
 
           <button type="submit" className="sign-btn">
-            Sign In
+            Sign Up
           </button>
         </form>
-        <Link to="/forgotPassword">Forgot Password?</Link>
-
         <span className="toggle">
-          Don't Have an account?{" "}
-          <Link to="/signup">
-            <button>Sign Up</button>
+          Already Have an account?{" "}
+          <Link to="/signin">
+            <button>Sign In</button>
           </Link>
         </span>
       </div>
@@ -102,4 +127,4 @@ const Signin = () => {
   );
 };
 
-export default Signin;
+export default Signup;

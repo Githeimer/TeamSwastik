@@ -26,14 +26,12 @@ body{
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  align-items: center;
- 
   height: 100vh;
   background-color: var(--background-color);
 }
 
 .sign-container{
-  width: auto;
+  width: 500px;
   border: 1px solid #ccc;
   display: flex;
   flex-direction: column;
@@ -47,10 +45,13 @@ body{
 
 .sign-container h1{
   text-align: center;
+  font-weight: bold;
+  font-size: 1.2rem;
 }
 
 .center{
   justify-content: center;
+  align-items: center;
 }
 
 .sign-form{
@@ -61,14 +62,15 @@ body{
   margin-top:20px;
 }
 
-.sign-form input{
+.sign-form input,select{
   border: 1px solid gray;
   padding: 4px;
   border-radius: 3px;
-  outline: none;
+ 
 }
 
-.sign-form input:focus{
+
+.sign-form input:focus,option:focus{
   border: 1px solid rgba(4, 64, 205, 0.651);
   outline: none;
   padding: 4.5px;
