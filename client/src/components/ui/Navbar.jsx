@@ -10,11 +10,18 @@ import {
   Transition,
 } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 const navigation = [
-  { name: "Dashboard", href: "#", current: true },
-  { name: "Projects", href: "#", current: false },
-  { name: "Calendar", href: "#", current: false },
+  { name: "Home", href: "#", current: true },
+  { name: "About", href: "#", current: false },
+  {
+    name: "Projects",
+    href: "http://localhost:5173/landing/cards",
+    current: false,
+  },
+  { name: "Contact Us", href: "#", current: false },
+  { name: "Blogs", href: "#", current: false },
 ];
 
 function classNames(...classes) {
@@ -45,10 +52,13 @@ export default function Example() {
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex flex-shrink-0 items-center">
                   <img
-                    className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                    className="h-[40px] w-auto"
+                    src="/logo.png"
                     alt="Your Company"
                   />
+                  <h1 className="text-white ml-2 font-bold">
+                    Open<span className="text-[#5cb5d1]">Aid</span>
+                  </h1>
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
@@ -86,7 +96,11 @@ export default function Example() {
                     <MenuButton className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                       <span className="absolute -inset-1.5" />
                       <span className="sr-only">Open user menu</span>
-                      <p className="bg-">Hello {User}</p>
+                      <img
+                        src="/user.png"
+                        className="h-5 w-5 rounded-full"
+                        alt="User"
+                      />
                     </MenuButton>
                   </div>
                   <Transition
@@ -99,11 +113,11 @@ export default function Example() {
                   >
                     <MenuItems className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                       <MenuItem>
-                        {({ focus }) => (
+                        {({ active }) => (
                           <a
                             href="#"
                             className={classNames(
-                              focus ? "bg-gray-100" : "",
+                              active ? "bg-gray-100" : "",
                               "block px-4 py-2 text-sm text-gray-700"
                             )}
                           >
@@ -112,11 +126,11 @@ export default function Example() {
                         )}
                       </MenuItem>
                       <MenuItem>
-                        {({ focus }) => (
+                        {({ active }) => (
                           <a
                             href="#"
                             className={classNames(
-                              focus ? "bg-gray-100" : "",
+                              active ? "bg-gray-100" : "",
                               "block px-4 py-2 text-sm text-gray-700"
                             )}
                           >
@@ -125,11 +139,11 @@ export default function Example() {
                         )}
                       </MenuItem>
                       <MenuItem>
-                        {({ focus }) => (
+                        {({ active }) => (
                           <a
                             href="/signin"
                             className={classNames(
-                              focus ? "bg-gray-100" : "",
+                              active ? "bg-gray-100" : "",
                               "block px-4 py-2 text-sm text-gray-700"
                             )}
                           >
@@ -140,6 +154,34 @@ export default function Example() {
                     </MenuItems>
                   </Transition>
                 </Menu>
+
+                {/* Social Media Icons */}
+                <div className="flex space-x-4 ml-4">
+                  <a
+                    href="https://www.facebook.com"
+                    className="text-gray-400 hover:text-white"
+                  >
+                    <FaFacebook className="h-6 w-6" />
+                  </a>
+                  <a
+                    href="https://www.twitter.com"
+                    className="text-gray-400 hover:text-white"
+                  >
+                    <FaTwitter className="h-6 w-6" />
+                  </a>
+                  <a
+                    href="https://www.instagram.com"
+                    className="text-gray-400 hover:text-white"
+                  >
+                    <FaInstagram className="h-6 w-6" />
+                  </a>
+                  <a
+                    href="https://www.linkedin.com"
+                    className="text-gray-400 hover:text-white"
+                  >
+                    <FaLinkedin className="h-6 w-6" />
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -162,6 +204,33 @@ export default function Example() {
                   {item.name}
                 </DisclosureButton>
               ))}
+              {/* Mobile Social Media Icons */}
+              <div className="flex justify-center space-x-4 mt-4">
+                <a
+                  href="https://www.facebook.com"
+                  className="text-gray-400 hover:text-white"
+                >
+                  <FaFacebook className="h-6 w-6" />
+                </a>
+                <a
+                  href="https://www.twitter.com"
+                  className="text-gray-400 hover:text-white"
+                >
+                  <FaTwitter className="h-6 w-6" />
+                </a>
+                <a
+                  href="https://www.instagram.com"
+                  className="text-gray-400 hover:text-white"
+                >
+                  <FaInstagram className="h-6 w-6" />
+                </a>
+                <a
+                  href="https://www.linkedin.com"
+                  className="text-gray-400 hover:text-white"
+                >
+                  <FaLinkedin className="h-6 w-6" />
+                </a>
+              </div>
             </div>
           </DisclosurePanel>
         </>

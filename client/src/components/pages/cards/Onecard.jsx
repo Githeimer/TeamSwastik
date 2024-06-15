@@ -23,7 +23,7 @@ const Onecard = () => {
           />
           <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
             <h2 className="text-sm title-font text-gray-500 tracking-widest">
-              PROJECT LOCATION
+              {project.location}
             </h2>
             <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
               {project.title}
