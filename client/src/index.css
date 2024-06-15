@@ -49,6 +49,14 @@ body{
   font-size: 1.2rem;
 }
 
+.sign-container input{
+  outline: none;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 3px;
+  width: 100%;
+
+}
+
 .center{
   justify-content: center;
   align-items: center;
@@ -63,7 +71,7 @@ body{
 }
 
 .sign-form input,select{
-  border: 1px solid gray;
+  border: 1px solid rgb(8, 0, 0);
   padding: 4px;
   border-radius: 3px;
  
@@ -72,9 +80,9 @@ body{
 
 .sign-form input:focus,option:focus{
   border: 1px solid rgba(4, 64, 205, 0.651);
-  outline: none;
   padding: 4.5px;
   transition: 0.12s;
+  outline: none;
  
 }
 
@@ -105,4 +113,7 @@ body{
   color: green;
 }
 
+.org-container{
+  align-items: center;
+}
 
