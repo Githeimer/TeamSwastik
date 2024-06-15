@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
 
 const OrganizationInfo = () => {
   const [project, setProject] = useState("");
@@ -33,7 +32,6 @@ const OrganizationInfo = () => {
       })
       .then((response) => {
         if (response.data.message) {
-          console.log(response);
           setStatus(response.data.message);
           setError("");
         }
@@ -70,12 +68,15 @@ const OrganizationInfo = () => {
   };
 
   return (
-    <>
-      <div className="container org-container">
-        <div className="sign-container">
-          <h1>Project Setup</h1>
-          <form className="sign-form" onSubmit={handleSubmit}>
-            <label htmlFor="project" className="sign-form">
+    <div className="container mx-auto p-4">
+      <div className="max-w-sm mx-auto bg-white p-6 rounded-lg shadow-lg">
+        <h1 className="text-2xl font-bold mb-4 text-gray-800">Project Setup</h1>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-4">
+            <label
+              htmlFor="project"
+              className="block text-gray-500 font-bold mb-2"
+            >
               Project Name:
             </label>
             <input
@@ -85,9 +86,16 @@ const OrganizationInfo = () => {
               onChange={handleProject}
               required
               placeholder={placeholder.project}
+              className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
             />
-
-            <label htmlFor="organization">Organization Name:</label>
+          </div>
+          <div className="mb-4">
+            <label
+              htmlFor="organization"
+              className="block text-gray-500 font-bold mb-2"
+            >
+              Organization Name:
+            </label>
             <input
               type="text"
               id="organization"
@@ -95,45 +103,86 @@ const OrganizationInfo = () => {
               onChange={handleOrganization}
               required
               placeholder={placeholder.organization}
+              className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
             />
-
-            <label htmlFor="fund">Estimated Fund Ask Amount:</label>
+          </div>
+          <div className="mb-4">
+            <label
+              htmlFor="fund"
+              className="block text-gray-500 font-bold mb-2"
+            >
+              Estimated Fund Ask Amount:
+            </label>
             <input
               type="text"
+              id="fund"
               value={funding}
               onChange={handleFunding}
               required
               placeholder={placeholder.funding}
+              className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
             />
-
-            <label htmlFor="duration">Duration:</label>
+          </div>
+          <div className="mb-4">
+            <label
+              htmlFor="duration"
+              className="block text-gray-500 font-bold mb-2"
+            >
+              Duration:
+            </label>
             <input
               type="text"
+              id="duration"
               value={duration}
               onChange={handleDuration}
               required
               placeholder={placeholder.duration}
+              className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
             />
-
-            <label htmlFor="location">Location:</label>
+          </div>
+          <div className="mb-4">
+            <label
+              htmlFor="location"
+              className="block text-gray-500 font-bold mb-2"
+            >
+              Location:
+            </label>
             <input
               type="text"
+              id="location"
               value={location}
               onChange={handleLocation}
               required
               placeholder={placeholder.location}
-            ></input>
-
-            <label htmlFor="image">Cover Image For the project:</label>
-            <input type="file" accept="image/*" />
-
-            <button type="submit" className="sign-btn">
+              className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+            />
+          </div>
+          <div className="mb-4">
+            <label
+              htmlFor="image"
+              className="block text-gray-500 font-bold mb-2"
+            >
+              Cover Image For the project:
+            </label>
+            <input
+              type="file"
+              accept="image/*"
+              className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+            />
+          </div>
+          <div className="flex items-center justify-between">
+            <button
+              type="submit"
+              className="shadow bg-[#3d4753] hover:bg-[#21262d] focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+            >
               Upload Project
             </button>
-          </form>
-        </div>
+          </div>
+          {error && <p className="text-red-500 mt-4">{error}</p>}
+          {status && <p className="text-green-500 mt-4">{status}</p>}
+        </form>
       </div>
-    </>
+    </div>
   );
 };
 
