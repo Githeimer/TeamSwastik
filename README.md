@@ -6,7 +6,7 @@ https://github.com/Githeimer/TeamSwastik/assets/105360939/b47698bc-a854-4ee5-859
 
 ## Overview
 
-TeamSwastik is a blockchain-based project focused on creating decentralized solutions.
+OpenAID is a blockchain-based project focused on creating decentralized solutions.
 
 ## Features
 
